@@ -30,3 +30,14 @@ it('Doesn\'t let months overflow', () => {
     day: 8,
   });
 });
+
+it('Knows which years are leap years', () => {
+  expect(SimpleDay.isLeapYear(1700)).toBe(false);
+  expect(SimpleDay.isLeapYear(1800)).toBe(false);
+  expect(SimpleDay.isLeapYear(1900)).toBe(false);
+  expect(SimpleDay.isLeapYear(1999)).toBe(false);
+  expect(SimpleDay.isLeapYear(1600)).toBe(true);
+  expect(SimpleDay.isLeapYear(2000)).toBe(true);
+  expect(SimpleDay.isLeapYear(2004)).toBe(true);
+  expect(SimpleDay.isLeapYear(2008)).toBe(true);
+});
