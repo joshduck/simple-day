@@ -1,0 +1,15 @@
+{
+  "name": "simple-day",
+  "version": "0.0.0",
+  "description": "A simple library for working with calendar days.",
+  "main": "src/SimpleDay.js",
+  "scripts": {
+    "test": "/usr/local/bin/node node_modules/jest-cli/bin/jest.js"
+  },
+  "author": "Josh Duck <dev@joshduck.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest-cli": "~15.1.1",
+    "babel-jest": "~15.0.0"
+  }
+}
