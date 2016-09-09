@@ -1,25 +1,34 @@
 const isLeapYear = require('./utils/isLeapYear');
 const daysInMonth = require('./utils/daysInMonth');
+const yearOffsetForMonth = require('./utils/yearOffsetForMonth');
+
+function clone(input) {
+  return {
+    year: input.year,
+    month: input.month,
+    day: input.day,
+  };
+}
+
+function normalize(input) {
+  const overflowYear = yearOffsetForMonth(input.month);
+  input.year += overflowYear;
+  input.month -= overflowYear * 12;
+  return input;
+}
 
 var SimpleDay = {
   create: function(year, month, day) {
-    var overflowYear = 0;
-
-    if (month > 12) {
-      overflowYear = Math.ceil(month / 12) - 1;
-    } else if (month < 1) {
-      overflowYear = Math.floor((month - 1) / 12);
-    }
-
-    year += overflowYear;
-    month -= overflowYear * 12;
-
-    return {
+    return normalize({
       year: year,
       month: month,
       day: day,
-    };
-  }
+    });
+  },
+
+  normalize: function(input) {
+    return normalize(clone(input));
+  },
 };
 
 module.exports = SimpleDay;
