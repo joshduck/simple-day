@@ -1,4 +1,17 @@
-const foo = 1;
+const DAYS_IN_MONTH = [
+  31,
+  28,
+  31,
+  30,
+  31,
+  30,
+  31,
+  31,
+  30,
+  31,
+  30,
+  31,
+];
 
 var SimpleDay = {
   create: function(y, m, d) {
@@ -18,6 +31,14 @@ var SimpleDay = {
       month: m,
       day: d,
     };
+  },
+
+  daysInMonth(y, m) {
+    if (m === 2 && SimpleDay.isLeapYear(y)) {
+      return 29;
+    } else {
+      return DAYS_IN_MONTH[m - 1];
+    }
   },
 
   isLeapYear(y) {
