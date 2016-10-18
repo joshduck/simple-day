@@ -11,5 +11,8 @@
   "devDependencies": {
     "jest-cli": "~15.1.1",
     "babel-jest": "~15.0.0"
+  },
+  "dependencies": {
+    "date-offset": "0.0.0"
   }
 }

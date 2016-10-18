@@ -38,3 +38,81 @@ describe('Normalize', () => {
     });
   });
 });
+
+describe('Years', () => {
+  it('Adds years', () => {
+    expect(SimpleDay.addYears({
+      year: 2011,
+      month: 2,
+      day: 1,
+    }, 1)).toEqual({
+      year: 2012,
+      month: 2,
+      day: 1,
+    });
+  });
+
+  it('Handles uneven month lengths', () => {
+    expect(SimpleDay.addYears({
+      year: 2012,
+      month: 2,
+      day: 29,
+    }, 1)).toEqual({
+      year: 2013,
+      month: 2,
+      day: 28,
+    });
+  });
+});
+
+describe('Months', () => {
+  it('Adds months', () => {
+    expect(SimpleDay.addMonths({
+      year: 2011,
+      month: 2,
+      day: 1,
+    }, 1)).toEqual({
+      year: 2011,
+      month: 3,
+      day: 1,
+    });
+  });
+
+  it('Handles uneven month lengths', () => {
+    expect(SimpleDay.addMonths({
+      year: 2011,
+      month: 1,
+      day: 30,
+    }, 1)).toEqual({
+      year: 2011,
+      month: 2,
+      day: 28,
+    });
+  });
+});
+
+describe('Days', () => {
+  it('Adds days', () => {
+    expect(SimpleDay.addDays({
+      year: 2011,
+      month: 3,
+      day: 2,
+    }, 5)).toEqual({
+      year: 2011,
+      month: 3,
+      day: 7,
+    });
+  });
+
+  it('Handles leap years', () => {
+    expect(SimpleDay.addDays({
+      year: 2011,
+      month: 3,
+      day: 2,
+    }, 365)).toEqual({
+      year: 2012,
+      month: 3,
+      day: 1,
+    });
+  });
+});
